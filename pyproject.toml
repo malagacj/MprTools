@@ -1,0 +1,29 @@
+[project]
+name = "mpr_tools"
+dynamic = ["version"]
+description = "Common tools for several scenarios"
+readme = "README.md"
+authors = [
+    { name = "malagacj", email = "plokoon1987@gmail.com" }
+]
+requires-python = ">=3.10.16"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["build", "black", "flake8", "pylint", "pytest"]
+
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+source = "vcs"
+
+[tool.black]
+line-length = 79
+
+[tool.pytest.ini_options]
+pythonpath = [
+    "."
+]
+
