@@ -10,7 +10,7 @@ requires-python = ">=3.10.16"
 dependencies = []
 
 [project.optional-dependencies]
-dev = ["build", "black", "flake8", "pylint", "pytest"]
+dev = ["build", "black", "flake8", "pylint", "pytest", "pytest-cov"]
 
 [build-system]
 requires = ["hatchling", "hatch-vcs"]
@@ -23,6 +23,8 @@ source = "vcs"
 line-length = 79
 
 [tool.pytest.ini_options]
+addopts ="--cov=src --cov-report=html"
+testpaths = ["tests"]
 pythonpath = [
     "."
 ]
