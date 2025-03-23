@@ -2,20 +2,25 @@ name: Python package
 
 on:
   push:
-    branches: [master, develop]
+    branches:
+      - '**'
+    tags:
+      - 'v*'
   pull_request:
-    branches: [master, develop]
-    
+      - '**'
+
 
 jobs:
-  build:
+  ci:
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
         python-version: ["3.10", "3.11", "3.12"]
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
       
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
@@ -23,7 +28,10 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Install dependencies
-        run: pip install -e '.[dev]'
+        run: |
+          pip install -U pip
+          pip install '.[dev]'
+          pip install '.[sec]'
 
       - name: Run tests with pytest
         run: pytest --cov-report=xml
