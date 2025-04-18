@@ -1,6 +1,9 @@
-"""Tools for file elements"""
+"""Tools for file extensions"""
 
 from pathlib import Path
+
+
+SUFFIX_OVERRIDE = {"yaml": "yml"}
 
 
 def get_extension(filename: Path | str) -> str:
@@ -12,4 +15,7 @@ def get_extension(filename: Path | str) -> str:
     suffixes = filename.suffixes
     if suffixes:
         suffixes[0] = suffixes[0].replace(".", "")
-    return "".join(suffixes)
+
+    full_suffix = "".join(suffixes)
+
+    return SUFFIX_OVERRIDE.get(full_suffix, full_suffix)

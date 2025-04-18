@@ -1,8 +1,8 @@
-"""Tests for mpr_tools.files"""
+"""Tests for mpr_tools.files.ext"""
 
 from pathlib import Path
 
-from src.mpr_tools.files import get_extension
+from src.mpr_tools.files.ext import get_extension
 
 
 def test_get_extension_str():
