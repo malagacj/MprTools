@@ -631,6 +631,9 @@ wheels = [
 [[package]]
 name = "mpr-tools"
 source = { editable = "." }
+dependencies = [
+    { name = "pyyaml" },
+]
 
 [package.optional-dependencies]
 dev = [
@@ -657,6 +660,7 @@ requires-dist = [
     { name = "pylint", marker = "extra == 'dev'" },
     { name = "pytest", marker = "extra == 'dev'" },
     { name = "pytest-cov", marker = "extra == 'dev'" },
+    { name = "pyyaml", specifier = ">=6.0.2" },
     { name = "safety", marker = "extra == 'sec'" },
 ]
 provides-extras = ["dev", "sec"]

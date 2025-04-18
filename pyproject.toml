@@ -4,10 +4,12 @@ dynamic = ["version"]
 description = "Common tools for several scenarios"
 readme = "README.md"
 authors = [
-    { name = "malagacj", email = "plokoon1987@gmail.com" }
+    { name = "José Froylán Málaga Cardoza", email = "plokoon1987@gmail.com" }
 ]
 requires-python = ">=3.10.16"
-dependencies = []
+dependencies = [
+    "pyyaml>=6.0.2",
+]
 
 [project.optional-dependencies]
 dev = ["build", "black", "flake8", "pylint", "pytest", "pytest-cov"]
@@ -24,9 +26,8 @@ source = "vcs"
 line-length = 79
 
 [tool.pytest.ini_options]
-addopts ="--cov=src --cov-report=html"
+addopts ="--cov=src --cov-report=html --cov-fail-under=100"
 testpaths = ["tests"]
 pythonpath = [
     "."
 ]
-
