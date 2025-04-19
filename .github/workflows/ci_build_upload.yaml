@@ -1,4 +1,4 @@
-name: CI - Tests - Security
+name: CI: Tests - Security - Build - Upload
 
 on:
   push:
@@ -52,9 +52,6 @@ jobs:
       - name: Check for security vulnerabilities with bandit
         run: bandit src tests
 
-#      - name: Check for security vulnerabilities with safety
-#        run: safety check
-
       - name: Check for security vulnerabilities with pip-audit
         run: pip-audit --skip-editable
 
@@ -63,9 +60,6 @@ jobs:
     needs: ci
     if: startsWith(github.ref, 'refs/tags/v')
     steps:
-      - name: Dump GitHub context
-        run: echo "${{ toJson(github) }}"
-
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -78,7 +72,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install build twine
-          git tag -l
 
       - name: Build package
         run: python -m build
