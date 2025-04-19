@@ -1,4 +1,4 @@
-name: CI: Tests - Security - Build - Upload
+name: Tests - Security - Build - Upload
 
 on:
   push:
