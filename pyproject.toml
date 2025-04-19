@@ -1,5 +1,5 @@
 [project]
-name = "mpr_tools"
+name = "mpr-tools"
 dynamic = ["version"]
 description = "Common tools for several scenarios"
 readme = "README.md"
